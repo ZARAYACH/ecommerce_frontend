@@ -1,29 +1,19 @@
-import './App.css';
+
 import React,{useState,useEffect} from 'react';
-import Landing from './component/index/landing';
-import NavBar from './component/header/navBar';
-import Carousel from './component/carousel/carousel';
 import axios from 'axios';
+import {BrowserRouter as Router,Route, Routes ,Link} from 'react-router-dom';
+import Home from './component/home/home';
+
 
 
 function App() {
-const [products,setProducts] = useState({});
-const [laoding,setLouding] = useState(true);
-
-   
-  useEffect(()=>{
-     fetch("http://localhost:8081/api/v1/product/all")
-        .then(response => response.json())
-        .then(response => {
-           setLouding(false);
-           setProducts(response)
-        })
-      },[])
   return(
    <div className='container'>
-      <NavBar/>
-      <Landing/>
-      {(!laoding) ? <Carousel products={products}/> :'' }
+      <Router>
+         <Routes>
+         <Route path='/' element= {<Home/>} />
+         </Routes>
+      </Router>
       
    </div>
   );

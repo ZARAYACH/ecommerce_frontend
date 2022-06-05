@@ -1,0 +1,112 @@
+.login-wraper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+.login-container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 7rem 0;
+
+}
+.outline-border { 
+    width: 400px;
+    padding: 20px;
+    border-top: 10px solid #AD91F8;
+    border-bottom:10px solid #003D99;
+    background-image: 
+        linear-gradient(#AD91F8, #003D99),
+        linear-gradient(#AD91F8, #003D99)
+    ;
+    background-size:10px 100%;
+    background-position:0 0, 100% 0;
+    background-repeat:no-repeat;
+}
+.container-head{
+    margin: 2rem 0;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-head .logo{
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    transition: .3s;
+}
+.container-head .logo:hover{
+    opacity: .7;
+}
+.main-form{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-form input{
+    width: 75%;
+    height: 2rem;
+    padding: .3rem;
+    margin: 1.2rem 0;
+    background-color: #040406;
+    border: 2px solid rgba(255, 255, 255, 0.316);
+    border-radius: 5px;
+    font-weight: 500;
+    transition: .3s;
+}
+.checkbox{
+    width: 75%;
+    display: inline;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start ;
+}
+.checkbox label{
+    margin-left: 0.3rem;
+    opacity: .7;
+}
+.main-form input[type = "checkbox"]{
+    width: 15px;
+    margin: 0;
+}
+.main-form input:focus{
+    border: 2px solid white;
+    outline: none;
+}
+.main-form input[type = "button"]{
+    width: 60%;
+    cursor: pointer;
+}
+.main-form input[type = "button"]:hover{
+    background-color: white;
+    color: #040406;
+}
+.forgot{
+    margin-top: 2rem;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.forgot a{
+    margin-top: .4rem;
+    font-weight: 400;
+    opacity: .4;
+    transition: .3s; 
+    text-decoration: none;   
+}
+.forgot a:hover{
+    opacity: 1;
+}
+.error{
+    border: 2px solid rgba(228, 21, 21, 0.662) !important;
+}

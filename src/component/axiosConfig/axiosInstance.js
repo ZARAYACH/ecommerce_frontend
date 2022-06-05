@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstancePublic = axios.create({
     baseURL:"http://localhost:8081",
-    headers:{'content-type':"apllication/json"}
+    headers:{'content-type':"application/json"}
      })
 
 const axiosInstanceAuthoraized = axios.create({

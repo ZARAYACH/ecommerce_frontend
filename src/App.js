@@ -14,18 +14,11 @@ function App() {
    <div className='container'>
       <Router>
          <Routes>
-<<<<<<< HEAD
          <Route path='/' element= {<Home/>} />
-         <Route path='/account' element={Login} />
+         <Route path='/account' element={<Login/>} />
+         <Route path='/signup' element={<Signup/>}/>
          <Route path='/dashbord' element= {<Dashboard/>} />
-
-
-=======
-            <Route path='/' element= {<Home/>} />
-            <Route path='/account' element={<Login/>} />
-            <Route path='/signup' element={<Signup/>}/>
    
->>>>>>> 43066d4aa158504260d673377be2f93ecf0a0a63
          </Routes>
       </Router>
       

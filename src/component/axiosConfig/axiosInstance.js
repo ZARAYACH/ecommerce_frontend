@@ -1,17 +1,18 @@
 import axios from "axios";
+import GlobalUrl from "../variables/Global";
 
 const axiosInstancePublic = axios.create({
-    baseURL:"http://localhost:8081",
+    baseURL:GlobalUrl(),
     headers:{'content-type':"application/json"}
      })
 
 const axiosInstanceAuthoraized = axios.create({
-    baseURL:"http://localhost:8081/api/v1",
+    baseURL:GlobalUrl()+"/api/v1",
     headers:{"Authorization":"Bearer "+localStorage.getItem("t_access_token"),'content-type':"apllication/json"}
 })
 
 const axiosInstanceOfRefrechToken = axios.create({
-    baseURL:"localhost:8081/api/v1/token/refresh",
+    baseURL:GlobalUrl()+"/api/v1/token/refresh",
     headers:{"refreshToken":"Bearer "+localStorage.getItem("t_referch_token"),'content-type':"apllication/json"}
 })
 

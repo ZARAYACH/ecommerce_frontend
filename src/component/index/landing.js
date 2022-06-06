@@ -1,7 +1,9 @@
 import React,{useEffect,useState} from "react";
 import "./landingStyle.css"
 import axios from "axios";
+import GlobalUrl from "../variables/Global";
 function Landing(props){
+    const url = GlobalUrl()+"/images/products/phone.svg";
 
     return (
         <main className="main">
@@ -16,7 +18,7 @@ function Landing(props){
                 <a>Learn more <i className="fa-solid fa-angle-right"></i></a>
             </div>
             <div className="down">
-                <img src="http://localhost:8081/images/products/phone.svg" alt=""></img>
+                <img src={url} alt=""></img>
             </div>
         </div>
         <div className="followHero">

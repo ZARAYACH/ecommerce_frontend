@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from "react";
+import GlobalUrl from "../variables/Global";
 import "./carouselItemStyle.css";
 
 function CarouselItem(props){
-    const url = "http://localhost:8081"
+    const url = GlobalUrl()
    const [imgs,setImgs] = useState(props.product.productImgs)
    const [imgPath,setImgPath] = useState("")
 

@@ -1,27 +1,40 @@
 
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router,Route, Routes ,Link} from 'react-router-dom';
+import {Route, Routes ,Link,useNavigate} from 'react-router-dom';
 import Home from './component/home/home';
 import Dashboard from './component/dashboard/Dashboard';
 import Login from './component/login/login';
 import Signup from './component/SignUp/SignUp';
 
+function RedirectToDashbord(){
 
+   const navigate = useNavigate();
+ 
+   useEffect(()=>{
+      navigate("/dashbord/home")
+   },[])
+   
+}
 
 function App() {
-  return(
-   <div className='container'>
-      <Router>
-         <Routes>
-         <Route path='/' element= {<Home/>} />
-         <Route path='/account' element={<Login/>} />
-         <Route path='/signup' element={<Signup/>}/>
-         <Route path='/dashbord' element= {<Dashboard/>} />
+
    
+
+   return(
+   <div className='container'>
+         <Routes>
+            <Route path='/' element= {<Home/>} />
+            <Route path='/account' element={<Login/>} />
+            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/dashbord' element={<RedirectToDashbord/>} />
+            <Route path='/dashbord/home' element= {<Dashboard home/>} />
+            <Route path='/dashbord/profile' element= {<Dashboard profile/>} />
+            <Route path='/dashbord/reviews' element= {<Dashboard reviews/>} />
+            <Route path='/dashbord/search' element= {<Dashboard search/>} />
+            <Route path='/dashbord/settings' element= {<Dashboard settings/>} />
+            <Route path='/dashbord/logout' element= {<Dashboard logout/>} />
          </Routes>
-      </Router>
-      
    </div>
   );
 }

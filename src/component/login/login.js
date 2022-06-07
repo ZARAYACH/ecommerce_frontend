@@ -24,7 +24,7 @@ function Login() {
         .then((data) => {
           localStorage.setItem("t_access_token", data.access_token);
           localStorage.setItem("t_refrech_token", data.refresh_token);
-          navigate("/dashbord");
+          navigate("/dashbord/home");
         })
         .catch((err) => {
           emailTemp.current.classList.add("error");

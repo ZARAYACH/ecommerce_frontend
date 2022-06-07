@@ -4,10 +4,18 @@ import "./dashboardNav.css"
 
 function DashboardNav(props) {
 
+    const [activeNav,setActiveNav]= useState(false); 
+    const navRef = useRef();
+
+    const if(activeNav){
+
+    }
+
     return(
-        <div className="nav">
+        <div className="dashNav">
         <div className="above">
-        <ul>
+        <ul onMouseEnter={setActiveNav(true)}
+            onMouseLeave={setActiveNav(false)} ref={navRef}>
             <li location="home" className="click ">
                 <b></b>
                 <b></b>

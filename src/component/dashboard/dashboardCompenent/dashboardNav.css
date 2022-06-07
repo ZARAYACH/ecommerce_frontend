@@ -1,5 +1,5 @@
 
-.nav{
+.dashNav{
     width: 10%;
     position: fixed;
     left: 0px;
@@ -12,7 +12,7 @@
     align-items: flex-start;
     z-index: 1000;
 }
-.above,.under{
+.dashNav .above,.under{
     width: 0rem;
     display: flex;
     justify-content: flex-start;
@@ -29,15 +29,15 @@
     border-top-right-radius: .5rem;
     background-color: #303b47;
 }
-.under{
+.dashNav .under{
     height: 18%;
 }
-.under ul{
+.dashNav .under ul{
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
     background-color: #303b47;
 }
-ul{
+.dashNav ul{
     list-style: none;
     width: 4.5rem;
     height: 100%;
@@ -49,7 +49,7 @@ ul{
     align-items: center;
     transition: .4s ease-out;
 }
- ul li{
+.dashNav ul li{
     margin-top: 2rem;
     margin-left: 1rem;
     padding: .7rem 0rem;
@@ -60,7 +60,7 @@ ul{
     cursor: pointer;
     transition: .3s;
 }
-ul li:hover{
+.dashNav ul li:hover{
     background-color: rgba(255, 255, 255, 0.116);
 
 }
@@ -68,10 +68,10 @@ ul li:hover{
     background-color: #f9faff !important;
     color: black !important;
 }
-.active a{
+.dashNav .active a{
     color: black;
 }
- ul li a{
+.dashNav ul li a{
     color: white;
     width: 11rem;
     font-weight: 600;
@@ -80,7 +80,7 @@ ul li:hover{
     align-items: center;
     justify-content: center;
 }
-ul li.active b:nth-child(1){
+.dashNav ul li.active b:nth-child(1){
     position: absolute;
     top: -20px;
     height: 20px;
@@ -88,7 +88,7 @@ ul li.active b:nth-child(1){
     background-color: white;
     
 }
-ul li.active b:nth-child(1)::before{
+.dashNav ul li.active b:nth-child(1)::before{
     content: '';
     position: absolute;
     top: 0;
@@ -98,14 +98,14 @@ ul li.active b:nth-child(1)::before{
     background-color: #303b47;
     border-bottom-right-radius: 1rem;
 }
-ul li.active b:nth-child(2){
+.dashNav ul li.active b:nth-child(2){
     position: absolute;
     bottom: -20px;
     height: 20px;
     width: calc(100% - 8px);
     background-color: white;
 }
-ul li.active b:nth-child(2)::before{
+.dashNav ul li.active b:nth-child(2)::before{
     content: '';
     position: absolute;
     top: 0;
@@ -115,15 +115,15 @@ ul li.active b:nth-child(2)::before{
     background-color: #303b47;
     border-top-right-radius: 1rem;
 }
-ul li a i{
+.dashNav ul li a i{
     width: 30%;
     padding-left: 1rem;
    
 }
-ul li a span{
+.dashNav ul li a span{
     width: 70%;
 }
-.over button{
+.dashNav .over button{
     BORDER: NONE;
     OUTLINE: none;
     padding: 0.5rem 0.5rem;
@@ -134,8 +134,7 @@ ul li a span{
     cursor: pointer;
     transition: .3s;
 }
-.over button:hover{
+.dashNav .over button:hover{
     opacity: .7;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
 }

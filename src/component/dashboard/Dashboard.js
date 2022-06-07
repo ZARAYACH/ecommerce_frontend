@@ -1,19 +1,24 @@
 import React,{useRef,useState,useEffect} from 'react';
 import "./Dashboard.css";
-import DashboardNav from './dashboardCompenent/dashboardNav';
 import {Route, Routes ,Link,useNavigate} from 'react-router-dom';
-import Home from '../home/home';
-import DashbordHome from './dashboardCompenent/dashbordHome/DashbordHome';
+import DashboardNav from './dashboardCompenent/nav/dashboardNav';
+import DashbordHome from './dashboardCompenent/home/DashbordHome';
+import DashbordProfileCard from './dashboardCompenent/dashbordCard/DashbordProfileCard';
+
 
 function Dashboard(props) {
     
     return (
-        <div className="container">
-            <DashboardNav/>
+        <div>
+            <DashboardNav></DashboardNav>
+            <DashbordProfileCard/>
+            <div className="main_dashbord">
+            {props.home && <DashbordHome/>}
             {/* {props.search && <DashbordSearch/>}
             {props.profile && <DashbordProfile/>}
-            {props.settings && <DashbordSettings/>}
+            {props. && <DashbordHome/>}
             {props.home && <DashbordHome/>} */}
+            </div>
 
 
         </div>

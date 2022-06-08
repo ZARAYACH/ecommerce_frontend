@@ -2,7 +2,7 @@ import { React } from "react";
 
 function GlobalUrl(){
 
-    const Url = "http://localhost:8081"
+    const Url = "https://localhost:8080"
 
     return Url;
 }

@@ -11,7 +11,7 @@ function Landing(props){
             <div className="up">
                 <div className="baner">
                 <span>Powered By Ai</span>
-                <span>#Driven by Values</span>
+                <span>Driven by Values</span>
                 </div>
             </div>
             <div className="actionBtn">

@@ -1,19 +1,19 @@
 import React from 'react';
 import './dachbordCardProfile.css'
+import GlobalUrl from '../../../variables/Global';
 
 
 function DashbordProfileCard(params) {
     
     return(
         <div>
-            <div className="placeholder"></div>
             <div className="id-card">
             <div className="user-img"><div className="imgChange">
                 <form action="" encType="multipart/form-data">
                 <label htmlFor="changee"><i className="fa fa-upload"></i></label>    
                 <input id="changee" name="changee" type="file"></input>
                 </form>
-            </div><img id='userIMG' src="" alt=""></img></div>
+            </div><img id='userIMG' src='' alt=""></img></div>
                 <div className="user-name"><span>Dear Customer ,Welcome</span>
                 </div>
             <div className="contact">

@@ -1,4 +1,5 @@
 import React from 'react';
+import './dachbordCardProfile.css'
 
 
 function DashbordProfileCard(params) {
@@ -8,8 +9,8 @@ function DashbordProfileCard(params) {
             <div className="placeholder"></div>
             <div className="id-card">
             <div className="user-img"><div className="imgChange">
-                <form action="" enctype="multipart/form-data">
-                <label for="changee"><i className="fa fa-upload"></i></label>    
+                <form action="" encType="multipart/form-data">
+                <label htmlFor="changee"><i className="fa fa-upload"></i></label>    
                 <input id="changee" name="changee" type="file"></input>
                 </form>
             </div><img id='userIMG' src="" alt=""></img></div>
@@ -18,14 +19,14 @@ function DashbordProfileCard(params) {
             <div className="contact">
                 <p>Contact information</p>
                 <div className="contact-info">
-                    <label for="">Email</label>
+                    <label htmlFor="">Email</label>
                     <div className="info">
                         <span></span>
                         <i className="fa-solid fa-envelope"></i>
                     </div>
                 </div>
                     <div className="contact-info">
-                    <label for="">Phone</label>
+                    <label htmlFor="">Phone</label>
                     <div className="info">
                     <span id="phoneNbre"><span id="country-code"></span></span>
                     <i className="fa fa-phone"></i>
@@ -97,7 +98,7 @@ function DashbordProfileCard(params) {
                         <div className="day">Fri</div>
                     </div>
                     <div className="tower">
-                        <div className="chart">
+                        <div className="chart"> 
                         <span className="planned"></span>
                             <span className="booked"></span>
                             <span className="Canceled"></span>

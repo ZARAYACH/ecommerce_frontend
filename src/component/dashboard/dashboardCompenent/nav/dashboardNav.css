@@ -1,0 +1,139 @@
+.dashNav{
+    width: 10%;
+    position: fixed;
+    left: 0px;
+    height: 100vh;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+}
+.dashNav .above,.under{
+    width: 0rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;    
+    margin-left: 1rem
+ 
+}
+.above{
+    height: 77%;
+
+}
+.above ul{
+    border-top-left-radius:.5rem;
+    border-top-right-radius: .5rem;
+    background-color: #303b47;
+}
+.dashNav .under{
+    height: 18%;
+}
+.dashNav .under ul{
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    background-color: #303b47;
+}
+.dashNav ul{
+    list-style: none;
+    width: 4.5rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .4s ease-out;
+}
+.dashNav ul li{
+    margin-top: 2rem;
+    margin-left: 1rem;
+    padding: .7rem 0rem;
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+}
+.dashNav ul li:hover{
+    background-color: rgba(255, 255, 255, 0.116);
+
+}
+.active{
+    background-color: #f9faff !important;
+    color: black !important;
+}
+.dashNav .active a{
+    color: black;
+}
+.dashNav ul li a{
+    color: white;
+    width: 14rem;
+    font-weight: 600;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.dashNav ul li.active b:nth-child(1){
+    position: absolute;
+    top: -20px;
+    height: 20px;
+    width: calc(100% - 8px);
+    background-color: white;
+    
+}
+.dashNav ul li.active b:nth-child(1)::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #303b47;
+    border-bottom-right-radius: 1rem;
+}
+.dashNav ul li.active b:nth-child(2){
+    position: absolute;
+    bottom: -20px;
+    height: 20px;
+    width: calc(100% - 8px);
+    background-color: white;
+}
+.dashNav ul li.active b:nth-child(2)::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #303b47;
+    border-top-right-radius: 1rem;
+}
+.dashNav ul li a i{
+    width: 30%;
+    padding-left: 1rem;
+   
+}
+.dashNav ul li a span{
+    width: 70%;
+}
+.dashNav .over button{
+    BORDER: NONE;
+    OUTLINE: none;
+    padding: 0.5rem 0.5rem;
+    background: var(--orange);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+.dashNav .over button:hover{
+    opacity: .7;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

@@ -20,7 +20,7 @@ const [laoding,setLouding] = useState(true);
         })
       },[])
   return(
-   <div className='container'>
+   <div>
       <NavBar/>
       <Landing/>
       {(!laoding) ? <Carousel products={products}/> :"" }

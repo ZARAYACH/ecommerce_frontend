@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './DashbordHome.css'
 import GlobalUrl from "../../../variables/Global";
 import Order from "../orderTr";
 function DashbordHome(props) {
+    const [orders,setOrders] = useState([])
+    const [nbrBought,setNbrBought]= useState(0)
+    const [boughProduct,setBoughProduct] = useState()
+    const [averageCosts,setAverageCosts] = useState()
+    const [inCart,setInCart] = useState()
+    const [totalCosts,setTotalCosts] = useState()
     
-  
+    useEffect(()=>{
+        setOrders(props.orders)
+    },[props.orders])
 
+    useEffect(()=>{
+        let nbrBoughtT =0;
+        for(let i=0;i<orders.length;i++){
+            nbrBoughtT +=orders[i].orderItems.length
+        }
+        setNbrBought(nbrBoughtT)
 
+    },[orders])
     return (
         <div className="home">
             
-        <div className="up">
+        <div className="upp">
           <div className="spending">
               <div className="spending-title">
                   Your Dashboard
@@ -20,7 +35,7 @@ function DashbordHome(props) {
                   <div className="box">
                       <div className="box-title">bough product</div>
                       <div className="box-info">
-                          <div className="box-booked"></div>
+                          <div className="box-booked">{nbrBought}</div>
                           <div className="stat">
                               <div className="stat-chart"><i className="fa-solid fa-arrow-trend-up"></i></div>
                               <div className="stat-percentage">0%</div>
@@ -44,10 +59,10 @@ function DashbordHome(props) {
                   <div className="box">
                       <div className="box-title">In cart</div>
                       <div className="box-info">
-                          <div className="box-booked">0 </div>
+                          <div className="box-booked">0</div>
                           <div className="stat">
                               <div className="stat-chart"><i className="fa-solid fa-arrow-trend-up"></i></div>
-                              <div className="stat-percentage">2.4%</div>
+                              <div className="stat-percentage">0%</div>
 
                           </div>
                       </div>
@@ -59,7 +74,7 @@ function DashbordHome(props) {
                           <div className="box-booked"></div>
                           <div className="stat">
                               <div className="stat-chart"><i className="fa-solid fa-arrow-trend-up"></i></div>
-                              <div className="stat-percentage">2.4%</div>
+                              <div className="stat-percentage">0%</div>
 
                           </div>
                       </div>
@@ -86,7 +101,7 @@ function DashbordHome(props) {
             </thead>
         <tbody>
         {
-           props.orders.map((order)=>(
+          props.orders.map((order)=>(
             <Order key ={order.id} order={order} />
            ))
         }

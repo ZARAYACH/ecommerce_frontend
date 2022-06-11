@@ -12,17 +12,22 @@ function Dashboard(props) {
 
   const [user,setUser] = useState({});
   const [orders,setOrders] = useState([]);
-  const [laoding,setLaoding] = useState(true);
+  const [laoding,setLaoding] = useState(false);
   const navigate = useNavigate();
   const [authorized,setAuthorized] = useState(false);
+
+
+  const [home,setHome] = useState();
+
+
 
   useEffect(()=>{
    axiosInstanceAuthoraized.get("/user/info").then(res=>{
       if(res != undefined){
         if(res.name == undefined && res.name != "AxiosError" ){
-          setAuthorized(true)
+          setLaoding(true)
           setUser(res.data)
-          console.log(res.data);
+          setAuthorized(true)
         }else{
            if(res.response.status === 403){
              setAuthorized(false)
@@ -37,24 +42,20 @@ function Dashboard(props) {
   },[])
 
   useEffect(()=>{
-    if(laoding){
-      if(user != {}){
+      if(laoding){
         axiosInstanceAuthoraized.get("/user/order/all")
         .then(res=>{
           if(res != undefined){
             if(res.status === 200){
               setOrders(res.data)
-              setLaoding(false)
-              console.log(res.data);
             }
           }else{
             navigate("/")
           }
         })
       }
-    }      
-
   },[laoding])
+  
 
 
 
@@ -65,10 +66,10 @@ function Dashboard(props) {
     <div className="dashboard-container">
       <DashboardNav></DashboardNav>
       <div className="main_dashbord">
-        {props.home && <DashbordHome user={user !={} ? user : {}} orders ={orders} />}
+        {props.home &&  <DashbordHome  orders ={orders!=[]?orders:[]} authorized={authorized} />}
         {/* {props.search && <DashbordSearch/>}
             {props.profile && <DashbordProfile/>}
-            {props. && <DashbordHome/>*/}
+            {props. && <DashbordHome/> */}
             {props.logout && <Logout/>} 
       </div>
       <div className="placeholder"></div>

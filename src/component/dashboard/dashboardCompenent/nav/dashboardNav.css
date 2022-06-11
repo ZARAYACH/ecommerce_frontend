@@ -51,7 +51,6 @@
 .dashNav ul li{
     margin-top: 2rem;
     margin-left: 1rem;
-    padding: .7rem 0rem;
     width: 100%;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -78,6 +77,7 @@
     text-decoration: none;
     align-items: center;
     justify-content: center;
+    padding: 1rem 0;
 }
 .dashNav ul li.active b:nth-child(1){
     position: absolute;

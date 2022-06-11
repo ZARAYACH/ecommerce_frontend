@@ -297,13 +297,13 @@
 .home .table tbody tr{
     width: 100%;
     margin-top: .6rem;
-    height: 4.5rem;
+    height: 2.5rem;
     background-color: white;
     text-align: center;
     font-size: 1rem;
     border-radius:1rem;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-
+    color: #303b47 !important;
 }
 .home .table tbody tr td:first-child{
     border-bottom-left-radius: 1rem ;
@@ -334,6 +334,9 @@
     display: inline-block;
     margin-left: 1rem;
     align-items: center;
+}
+.home .table tbody{
+    background-color: transparent;
 }
 .home .table tbody tr td:first-child .image img{
     max-width: 100%;

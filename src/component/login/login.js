@@ -15,16 +15,20 @@ function Login() {
 
   useEffect(() => {
     if (password != "") {
-      axiosInstancePublic
+       axiosInstancePublic
         .post("/login", {
           email: email,
           password: password,
         })
         .then((res) => res.data)
-        .then((data) => {
+        .then((data) =>{
           localStorage.setItem("t_access_token", data.access_token);
           localStorage.setItem("t_refrech_token", data.refresh_token);
-          navigate("/dashbord/home");
+          return localStorage.getItem("t_refrech_token");
+        }).then((data)=>{
+          if(localStorage.getItem("t_refrech_token")===data){
+            navigate("/dashbord/home");         
+          }
         })
         .catch((err) => {
           emailTemp.current.classList.add("error");

@@ -1,9 +1,10 @@
 import React from "react";
 import './DashbordHome.css'
 import GlobalUrl from "../../../variables/Global";
-
+import Order from "../orderTr";
 function DashbordHome(props) {
     
+  
 
 
     return (
@@ -76,16 +77,20 @@ function DashbordHome(props) {
         <table className="table">
              <thead>
                 <tr>
-                    <th >name</th>
-                    <th >qte</th>
-                    <th >categorie</th>
+                    <th >traking Number</th>
+                    <th >items</th>
                     <th >status</th>
+                    <th> date</th>
                     <th >total</th>
                 </tr>
             </thead>
         <tbody>
-
-
+        {
+           props.orders.map((order)=>(
+            <Order key ={order.id} order={order} />
+           ))
+        }
+       
         </tbody>
 </table>
 </div>

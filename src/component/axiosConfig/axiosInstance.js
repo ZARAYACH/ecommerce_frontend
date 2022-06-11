@@ -18,16 +18,29 @@ const axiosInstanceOfRefrechToken = axios.create({
     headers:{"refreshToken":"Bearer "+localStorage.getItem("t_refrech_token"),'content-type':"apllication/json"}
 })
 
-axiosInstanceAuthoraized.interceptors.response.use(null,(error) => {
-    console.log(error);
+axiosInstanceAuthoraized.interceptors.response.use((res)=>{
+    return res;
+},(error)=> {
     if (error.response.status === 498) {
-       axiosInstanceOfRefrechToken()
+       return(axiosInstanceOfRefrechToken()
        .then((res) => {
-           console.log(res)
-      });
+         localStorage.setItem('t_access_token',res.data.access_token);
+        })
+        .then((res)=>{ 
+            error.config.headers.Authorization = "Bearer "+localStorage.getItem("t_access_token")
+           return(
+            axios.request(error.config).then((response)=>{
+                return response;
+            })
+           )
+        }).catch((error)=>{
+            return error;
+        })
+       )
     }
-    return Promise.reject(error);
+   
   });
+
 
 export {
     axiosInstancePublic,

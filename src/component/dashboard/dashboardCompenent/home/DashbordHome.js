@@ -4,23 +4,30 @@ import GlobalUrl from "../../../variables/Global";
 import Order from "../orderTr";
 function DashbordHome(props) {
     const [orders,setOrders] = useState([])
+    const [cartItems,setCartItems] = useState([])
     const [nbrBought,setNbrBought]= useState(0)
-    const [boughProduct,setBoughProduct] = useState()
-    const [averageCosts,setAverageCosts] = useState()
+    const [nbrCartItems,setNbrCartItems]= useState(0)
+    const [averageCosts,setAverageCosts] = useState(0.0)
     const [inCart,setInCart] = useState()
     const [totalCosts,setTotalCosts] = useState()
     
     useEffect(()=>{
+        console.log(props.cartItems);
         setOrders(props.orders)
+        setCartItems(props.cartItems)
     },[props.orders])
 
     useEffect(()=>{
         let nbrBoughtT =0;
+        let totalCotsTemp = 0.0;
         for(let i=0;i<orders.length;i++){
             nbrBoughtT +=orders[i].orderItems.length
+            totalCotsTemp +=orders[i].totalPrice;
         }
         setNbrBought(nbrBoughtT)
-
+        setNbrCartItems(cartItems.length)
+        setTotalCosts(totalCotsTemp)
+        
     },[orders])
     return (
         <div className="home">
@@ -59,7 +66,7 @@ function DashbordHome(props) {
                   <div className="box">
                       <div className="box-title">In cart</div>
                       <div className="box-info">
-                          <div className="box-booked">0</div>
+                          <div className="box-booked">{nbrCartItems}</div>
                           <div className="stat">
                               <div className="stat-chart"><i className="fa-solid fa-arrow-trend-up"></i></div>
                               <div className="stat-percentage">0%</div>
@@ -71,7 +78,7 @@ function DashbordHome(props) {
                   <div className="box">
                       <div className="box-title">total costs$</div>
                       <div className="box-info">
-                          <div className="box-booked"></div>
+                          <div className="box-booked">{totalCosts}</div>
                           <div className="stat">
                               <div className="stat-chart"><i className="fa-solid fa-arrow-trend-up"></i></div>
                               <div className="stat-percentage">0%</div>

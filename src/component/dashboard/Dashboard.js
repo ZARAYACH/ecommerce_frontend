@@ -12,6 +12,7 @@ function Dashboard(props) {
 
   const [user,setUser] = useState({});
   const [orders,setOrders] = useState([]);
+  const [cartItems,setCartItems] = useState([]);
   const [laoding,setLaoding] = useState(false);
   const navigate = useNavigate();
   const [authorized,setAuthorized] = useState(false);
@@ -53,7 +54,18 @@ function Dashboard(props) {
             navigate("/")
           }
         })
-      }
+
+        axiosInstanceAuthoraized.get("/user/cart/Cartitems/all")
+          .then(res=>{
+            if(res != undefined){
+              if(res.status === 200){
+                setCartItems(res.data)
+              }
+            }else{
+              navigate("/")
+            }
+          })
+        }
   },[laoding])
   
 
@@ -66,7 +78,7 @@ function Dashboard(props) {
     <div className="dashboard-container">
       <DashboardNav></DashboardNav>
       <div className="main_dashbord">
-        {props.home &&  <DashbordHome  orders ={orders!=[]?orders:[]} authorized={authorized} />}
+        {props.home &&  <DashbordHome  orders ={orders!=[]?orders:[]} authorized={authorized} cartItems = {cartItems} />}
         {/* {props.search && <DashbordSearch/>}
             {props.profile && <DashbordProfile/>}
             {props. && <DashbordHome/> */}

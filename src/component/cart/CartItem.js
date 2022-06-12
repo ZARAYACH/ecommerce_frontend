@@ -27,6 +27,8 @@ const CartItem = (props)=>{
         }).then((res)=>{
             if(res.status==200){
                 setQuantity(res.data)
+                cartItem.quantity = res.data;
+                setCartItem(cartItem)
             }
         })
     }
@@ -37,10 +39,16 @@ const CartItem = (props)=>{
             if(res!=undefined){
                 if(res.status==200){
                     setQuantity(res.data)
+                    cartItem.quantity = res.data;
+                    setCartItem(cartItem)
+
                 }
             }
         })
     }
+    useEffect(()=>{
+        props.updateCartItems(cartItem);
+    },[cartItem.quantity])
 
     return(
         <div className='card'>

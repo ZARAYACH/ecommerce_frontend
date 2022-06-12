@@ -322,7 +322,8 @@ opacity: 1 !important;
     padding-left: 5%;
     background-color: #ffffff8a;
     border-radius: 0.3rem;
-    color: #303b47;
+    font-weight: 400;
+    color: #ffffff;
 }
 .container_chekout .para{
     width: 100%;
@@ -360,7 +361,7 @@ opacity: 1 !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #303b47;
+    background-color: #ffffff65;
     padding: 1rem 0rem;
     color: white;
     border-radius: 1rem;
@@ -414,4 +415,8 @@ opacity: 1 !important;
     appearance: none;
     font-size: 14px;
     background-color: transparent;
+  }
+  .errorText{
+    color: #a11818;
+    font-weight: 700;
   }

@@ -62,7 +62,7 @@
     background-color: rgba(255, 255, 255, 0.116);
 
 }
-.active{
+.dashNav .active{
     background-color: #f9faff !important;
     color: black !important;
 }

@@ -7,14 +7,24 @@ import CartItem from './CartItem';
 
 const CartPage = ()=>{
 
+    const cardHolder = useRef();
+    const cardNumber= useRef();
+    const cardCvv = useRef();
+    const cardExpiredDateYear = useRef();
+    const cardExpiredDateMonth = useRef();
+    const errorHolder = useRef();
+
+    const [error,setError] = useState("");
     const [user,setUser] = useState({});
     const navigate = useNavigate();
     const [authorized,setAuthorized] = useState(false); 
     const [cartItems,setCartItems] = useState([]);
-    
+      
+    const [subCharge,setSubCharge] = useState(0);
+    const [extra,setExtra] = useState(0);
+    const [total,setTotal] = useState(0);
 
 
-  
     useEffect(()=>{
      axiosInstanceAuthoraized.get("/user/info").then(res=>{
         if(res != undefined){
@@ -50,6 +60,21 @@ const CartPage = ()=>{
 
     },[authorized])
 
+    useEffect(()=>{
+        let subCharge =0
+        let extraCharge =0
+        for(let i=0;i<cartItems.length;i++){
+            subCharge +=cartItems[i].quantity*cartItems[i].product.price;
+            extraCharge+=5
+        }
+        setSubCharge(subCharge)
+        setExtra(extraCharge)
+    },[cartItems])
+
+    useEffect(()=>{
+        setTotal(extra+subCharge)
+    },[extra,subCharge])
+
     const removeFromCart = (cartItem)=>{
         axiosInstanceAuthoraized.delete("/user/cart/item/delete?id="+cartItem.id)
         .then((res)=>{
@@ -60,6 +85,51 @@ const CartPage = ()=>{
             }
             }
         })
+    }
+
+    const makeOrder = ()=>{
+        if(cardCvv.current.value === '' || isNaN(cardCvv.current.value)){
+            cardCvv.current.classList.add("error")
+            setError("empty inputs or cardCvv incorrect");
+        }
+        if(cardHolder.current.value === ''){
+            cardHolder.current.classList.add("error")
+            setError("empty inputs")
+        }
+        if(cardNumber.current.value === ''|| isNaN(cardNumber.current.value)){
+            cardNumber.current.classList.add("error")
+            setError("empty inputs or cardNumber is incorrect")
+            
+        }
+        if(cardExpiredDateMonth.current.value === '' || isNaN(cardExpiredDateMonth.current.value)){
+            cardExpiredDateMonth.current.classList.add("error")
+            setError("empty inputs or date the expiration incorrect")
+            
+        }
+        if(cardExpiredDateYear.current.value === ''|| isNaN(cardExpiredDateYear.current.value)){
+            cardExpiredDateYear.current.classList.add("error")
+            setError("empty inputs or date the expiration incorrect")
+        
+        }
+       axiosInstanceAuthoraized.post("/user/makeOrder",{
+        "cardHolderName":cardHolder.current.value,
+        "cartNumber":cardNumber.current.value,
+        "cvv":cardCvv.current.value,
+        "expirationDate":cardExpiredDateYear.current.value+'-'+cardExpiredDateMonth.current.value+'-01',
+        "type":"visa"
+       })
+    }
+
+    const updateCartItems=(cartItem)=>{
+        let newCartItems= [];
+       for(let i =0;i<cartItems.length;i++){
+        if(cartItems[i].id==cartItem.id){
+            newCartItems.push(cartItem)
+        }else{
+            newCartItems.push(cartItems[i])
+        }
+       }
+       setCartItems(newCartItems)
     }
 
     if(authorized){
@@ -90,7 +160,7 @@ const CartPage = ()=>{
                <div className="cards_container">
                 {
                     cartItems.map((cartItem)=>(
-                        <CartItem key = {cartItem.id} cartItem = {cartItem} removeCartItem={removeFromCart} />
+                        <CartItem key = {cartItem.id} cartItem = {cartItem} updateCartItems={updateCartItems}  removeCartItem={removeFromCart} />
                     ))
                 }
                </div>
@@ -123,39 +193,40 @@ const CartPage = ()=>{
                 </div>
                 <div className="form">
                     <label htmlFor="holder-name">card holder name</label>
-                    <input className='p' id="holder-name" type="text" placeholder="Tom Hanks"></input>
+                    <input ref={cardHolder} className='p' id="holder-name" type="text" placeholder="Tom Hanks"></input>
                     <label htmlFor="card-number">Card Number</label>
-                    <input className='p' id="card-number" type="text" inputMode="numeric" maxLength="16" placeholder="1111 2222 3333 4444"></input>
+                    <input ref={cardNumber} className='p' id="card-number" type="text" inputMode="numeric" maxLength="16" placeholder="1111 2222 3333 4444"></input>
                     <div className="para">
                         <div className="para_1">
                         <label htmlFor="experation-date">Experation Date</label>
                         <div className="exp-wrapper p">
-                                <input  autoComplete="off" className="exp" id="month" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                                <input autoComplete="off" className="exp" id="year" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                                <input ref={cardExpiredDateMonth} autoComplete="off" className="exp" id="month" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                                <input ref={cardExpiredDateYear} autoComplete="off" className="exp" id="year" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="YY" type="text" data-pattern-validate />
                         </div>
                         </div>
                         <div className="para_2">
                         <label htmlFor="cvv">cvv</label>
-                            <input className='p' id="cvv" maxLength="3" inputMode="numeric" type="text" pattern="[0-9]{3}" placeholder="123" ></input>
+                            <input ref={cardCvv} className='p' id="cvv" maxLength="3" inputMode="numeric" type="text" pattern="[0-9]{3}" placeholder="123" ></input>
                         </div>
                     </div>
                 </div>
+                <span ref={errorHolder} className="errorText" >{error}</span>
                 <div className="summary">
                     <div className="extra">
                         <p>Sub Total </p>
-                        <span id="subTotal"></span>
+                        <span id="subTotal">{subCharge}</span>
                     </div>
                     <div className="extra">
                         <p>Extra charge</p>
-                        <span id="extra_charges"></span>
+                        <span id="extra_charges">{extra}</span>
                     </div>
                     <div className="extra">
                         <p>Total </p>
-                        <span id="total" ></span>
+                        <span id="total" >{total}</span>
                     </div>
                 </div>
-                <div className="validate">
-                    <span id="total">$total</span>
+                <div onClick={()=>makeOrder()} className="validate">
+                    <span id="total">${total}</span>
                 <span id="bla">chekout<i className="fa fa-arrow-right" aria-hidden="true"></i> </span>
                 
         </div>

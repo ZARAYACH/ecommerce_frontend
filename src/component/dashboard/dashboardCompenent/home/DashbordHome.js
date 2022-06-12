@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './DashbordHome.css'
-import GlobalUrl from "../../../variables/Global";
+import GlobalUrl from "../../../globals/Global";
 import Order from "../orderTr";
 function DashbordHome(props) {
+
     const [orders,setOrders] = useState([])
-    const [cartItems,setCartItems] = useState([])
     const [nbrBought,setNbrBought]= useState(0)
     const [nbrCartItems,setNbrCartItems]= useState(0)
     const [averageCosts,setAverageCosts] = useState(0.0)
@@ -12,10 +12,12 @@ function DashbordHome(props) {
     const [totalCosts,setTotalCosts] = useState()
     
     useEffect(()=>{
-        console.log(props.cartItems);
         setOrders(props.orders)
-        setCartItems(props.cartItems)
     },[props.orders])
+
+    useEffect(()=>{
+        setNbrCartItems(props.cartItems)
+    },[props.cartItems])
 
     useEffect(()=>{
         let nbrBoughtT =0;
@@ -25,9 +27,7 @@ function DashbordHome(props) {
             totalCotsTemp +=orders[i].totalPrice;
         }
         setNbrBought(nbrBoughtT)
-        setNbrCartItems(cartItems.length)
         setTotalCosts(totalCotsTemp)
-        
     },[orders])
     return (
         <div className="home">

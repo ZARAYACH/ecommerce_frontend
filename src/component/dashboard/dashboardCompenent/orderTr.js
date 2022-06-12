@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
-import GlobalUrl from '../../variables/Global'
+import GlobalUrl from '../../globals/Global'
 
 const Order = (props)=>{
 

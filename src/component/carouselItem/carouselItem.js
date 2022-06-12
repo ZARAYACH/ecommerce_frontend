@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from "react";
-import GlobalUrl from "../variables/Global";
+import { Link } from "react-router-dom";
+import { addToCart } from "../globals/Functions";
+import GlobalUrl from "../globals/Global";
 import "./carouselItemStyle.css";
 
 function CarouselItem(props){
@@ -27,8 +29,9 @@ function CarouselItem(props){
                     <div className="feature">Touch ID</div>
                     <div className="feature">Up to 18 hours battery life</div>
                     <div className="feature">Up to 2TB storage</div>
-                    </div>
-                <div className="addToCartBtn">Add to Cart</div>
+                    </div>;
+                 <button onClick={()=>{addToCart(props.product.id)
+                }} className="addToCartBtn">Add to Cart</button>
                 </div>
         </div>
     );

@@ -6,6 +6,7 @@ import Home from './component/home/home';
 import Dashboard from './component/dashboard/Dashboard';
 import Login from './component/login/login';
 import Signup from './component/SignUp/SignUp';
+import CartPage from './component/cart/CartPage';
 
 function RedirectToDashbord(){
 
@@ -34,6 +35,7 @@ function App() {
             <Route path='/dashbord/search' element= {<Dashboard search/>} />
             <Route path='/dashbord/settings' element= {<Dashboard settings/>} />
             <Route path='/dashbord/logout' element= {<Dashboard logout/>} />
+            <Route path='/cart' element= {<CartPage/>} />
          </Routes>
    </div>
   );

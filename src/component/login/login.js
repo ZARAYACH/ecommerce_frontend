@@ -16,7 +16,7 @@ function Login() {
   useEffect(() => {
     if (password != "") {
        axiosInstancePublic
-        .post("/login", {
+        .post("/login", { 
           email: email,
           password: password,
         })

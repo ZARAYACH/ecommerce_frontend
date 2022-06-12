@@ -1,0 +1,413 @@
+.container_chekout{
+    background-color: white;
+    width: 100%;
+    height: 109vh;
+    border-radius: 2rem;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    /* background-image: url(../IMG/landing-background-removebg-preview.png); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: space-between;
+
+}
+.container_chekout .left{
+    width: 61%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.container_chekout .back,.head{
+    width: 80%;
+}
+.container_chekout .cards_container{
+    width: 100%;
+}
+.container_chekout .back{  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top:1.5rem ;
+    border-bottom: 1px solid var(--gray);
+
+}
+.container_chekout .click{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: .3s;
+}
+.container_chekout .back a{
+    width: 2rem;
+    height: 1.5rem;
+    align-self: center;
+    font-size: 1.1rem;
+}
+.container_chekout .head{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1.5rem;
+}
+.container_chekout .title{
+    width:  60%;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  
+}
+.container_chekout .title h1{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.container_chekout .title span{
+    font-size: 0.9rem;
+}
+.container_chekout .sort{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+.container_chekout .sort p {
+    font-size: .8rem;
+    padding: 0;
+    margin: .1rem;
+}
+.container_chekout .sort select{
+    background-color: transparent;
+    width: 4rem;
+    height: 1.5rem;
+    border: 1px solid var(--gray);
+    outline: none;
+}
+.container_chekout .cards_container{
+    height: 70%;
+    margin-top: 1.5rem;
+    padding-top: .5rem    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container_chekout .card{
+    width: 80%;
+    min-height: 6.5rem;
+    background-color: rgba(255, 255, 255, 0.444);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 1rem;
+    margin-bottom: .8rem;
+    transition: .3s;
+}
+.container_chekout .card .img{
+    width: 4.5rem ;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #586777;
+    border-radius: .8rem;
+}
+.container_chekout .card .img img{
+   max-width: 90%;
+    max-height: 90%;
+    border-radius: .3rem;
+}
+.container_chekout .card_title{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.container_chekout .trip_title{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.container_chekout .trip_destination{
+    font-size: .7rem;
+    color: rgb(182, 182, 182);
+}
+
+.container_chekout .Number{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+.container_chekout .person{
+    width: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--gray);
+    border-radius: .4rem;
+}
+.container_chekout #minus,#plus{
+    width:  2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    MARGIN-TOP: 0.2rem;
+    opacity: .4;
+  
+    transition: .3s;
+}
+.container_chekout .plus,.minus{
+    cursor: pointer;
+}
+.container_chekout #minus:hover{
+    opacity: 1;
+}
+.container_chekout #plus:hover{
+    opacity: 1;
+}
+.container_chekout .delete{
+    opacity: .5;
+    transition: .3s;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.container_chekout .delete:hover{
+    opacity: 1;
+    color: #f02c2c;
+   
+}
+
+.container_chekout i{
+    width: 2rem;
+    text-align: center;
+    
+}
+
+.container_chekout .right{
+
+    margin-right: 5%;
+    width: 400px;
+    height: 90%;
+    background-color: var(--orange);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+}
+.container_chekout .right_head{
+    display: flex;
+    width: 85%;
+    margin-top: 1.2rem;
+    height: 4rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_chekout .right_title{
+    width: 60%;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.container_chekout .UserImg{
+    width: 18%;
+    DISPLAY: flex;
+    ALIGN-ITEMS: center;
+    JUSTIFY-CONTENT: center;
+}
+.container_chekout .UserImg img{
+    max-width: 100%;
+    border-radius: 0.8rem;
+}
+.container_chekout .ways{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    flex-direction: column;
+    width: 85%;
+    cursor: pointer;
+}
+.container_chekout .cards{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    color: white;
+    
+}
+.container_chekout .ways p{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: .7rem;
+}
+.container_chekout #pay{
+    width: 4.5rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.39);
+    border-radius: .2rem;
+    opacity: .7;
+    transition: .3S;
+    margin-right: .7rem;
+}
+.container_chekout #pay:hover{
+    opacity: 1;
+    border: 1px solid white;
+    
+}
+.container_chekout #pay .fa-brands {
+    color: white;
+    font-size: 2rem;
+}
+
+.container_chekout #selected{
+    width: 5%;
+    margin-bottom: 45%;
+    margin-right: 1%;
+    visibility: hidden;
+    color: white;
+}
+.container_chekout #selected i{
+    font-size: .9rem;
+    position: relative;
+}
+
+
+.container_chekout .active{
+visibility: visible !important;
+opacity: 1 !important;
+}
+
+.container_chekout .form{
+    width: 85%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 1rem;
+    BORDER-BOTTOM: 1px solid #ffffff52;
+
+}
+.container_chekout .form label{
+    font-size: .7rem;
+    margin-bottom: .3rem;
+}
+.container_chekout .form input{
+    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+      width: 95%;
+    height: 2rem;
+    font-size: .7rem;
+    padding-left: 5%;
+    background-color: #ffffff8a;
+    border-radius: 0.3rem;
+    color: #303b47;
+}
+.container_chekout .para{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.container_chekout .para_1,.para_2 {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+.container_chekout .summary{
+    color: white;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    margin-top: .8rem;
+}
+.container_chekout .extra{
+    display: flex;
+    align-items: center;
+    font-size: .8rem;
+    justify-content: space-between;
+    margin-top: .5rem;
+}
+.container_chekout .extra p {
+    margin: 0;
+    padding: 0;
+}
+.container_chekout .validate{
+    width: 85%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #303b47;
+    padding: 1rem 0rem;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+.container_chekout .validate #total{
+    margin-left: 1.2rem;
+    font-weight: 600;
+}
+.container_chekout #bla{
+    font-weight: 600;
+    margin-right: 1.2rem;
+}
+.container_chekout .validate:hover{
+    background-color: #526577;
+}
+
+.container_chekout .exp-wrapper {
+    position: relative;
+    border: 1px solid #aaa;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 2rem;
+    line-height: 36px;
+    font-size: 24px;
+    padding-left: 5%;
+    background-color: #ffffff8a;
+    border-radius: 0.3rem;
+    color: #303b47;
+    border: none;
+    outline :none;
+  }
+  
+  .container_chekout .exp-wrapper:after {
+    content: '/';
+    position: absolute;
+    left: 50%;
+    font-size: 1rem;
+    color: #303b47;
+    opacity: .5;
+  }
+  
+  .container_chekout input.exp {
+    float: left;
+    font-family: monospace;
+    border: 0;
+    width: 18px;
+    outline: none;
+    appearance: none;
+    font-size: 14px;
+    background-color: transparent;
+  }

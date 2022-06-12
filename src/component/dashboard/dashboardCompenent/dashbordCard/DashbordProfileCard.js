@@ -1,6 +1,6 @@
 import React from 'react';
 import './dachbordCardProfile.css'
-import GlobalUrl from '../../../variables/Global';
+import GlobalUrl from '../../../globals/Global';
 
 
 function DashbordProfileCard(props) {

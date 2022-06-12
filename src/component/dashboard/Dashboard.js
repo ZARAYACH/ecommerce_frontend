@@ -5,14 +5,14 @@ import DashboardNav from "./dashboardCompenent/nav/dashboardNav";
 import DashbordHome from "./dashboardCompenent/home/DashbordHome";
 import DashbordProfileCard from "./dashboardCompenent/dashbordCard/DashbordProfileCard";
 import { axiosInstanceAuthoraized, axiosInstanceOfRefrechToken } from "../axiosConfig/axiosInstance";
-import GlobalUrl from "../variables/Global";
+import GlobalUrl from "../globals/Global";
 import Logout from "./dashboardCompenent/Logout";
 
 function Dashboard(props) {
 
   const [user,setUser] = useState({});
   const [orders,setOrders] = useState([]);
-  const [cartItems,setCartItems] = useState([]);
+  const [cartItems,setCartItems] = useState();
   const [laoding,setLaoding] = useState(false);
   const navigate = useNavigate();
   const [authorized,setAuthorized] = useState(false);
@@ -54,12 +54,12 @@ function Dashboard(props) {
             navigate("/")
           }
         })
-
         axiosInstanceAuthoraized.get("/user/cart/Cartitems/all")
           .then(res=>{
             if(res != undefined){
               if(res.status === 200){
-                setCartItems(res.data)
+                setCartItems(res.data.length)
+              
               }
             }else{
               navigate("/")

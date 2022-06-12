@@ -1,5 +1,5 @@
 import axios from "axios";
-import GlobalUrl from "../variables/Global";
+import GlobalUrl from "../globals/Global";
 
 
 const axiosInstancePublic = axios.create({
@@ -9,13 +9,14 @@ const axiosInstancePublic = axios.create({
 
 const axiosInstanceAuthoraized = axios.create({
     baseURL:GlobalUrl()+"/api/v1",
-    headers:{"Authorization":"Bearer "+localStorage.getItem("t_access_token"),'content-type':"apllication/json"}
+    withCredentials:true,
+    headers:{"Authorization":"Bearer "+localStorage.getItem("t_access_token"),'content-type':"application/json"}
 })
 
 const axiosInstanceOfRefrechToken = axios.create({ 
     method:'POST',
     baseURL:GlobalUrl()+"/api/v1/token/refresh",
-    headers:{"refreshToken":"Bearer "+localStorage.getItem("t_refrech_token"),'content-type':"apllication/json"}
+    headers:{"refreshToken":"Bearer "+localStorage.getItem("t_refrech_token"),'content-type':"application/json"}
 })
 
 axiosInstanceAuthoraized.interceptors.response.use((res)=>{

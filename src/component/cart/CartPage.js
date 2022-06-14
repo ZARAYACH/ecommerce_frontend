@@ -10,8 +10,7 @@ const CartPage = ()=>{
     const cardHolder = useRef();
     const cardNumber= useRef();
     const cardCvv = useRef();
-    const cardExpiredDateYear = useRef();
-    const cardExpiredDateMonth = useRef();
+    const cardExpiredDate = useRef();
     const errorHolder = useRef();
 
     const [error,setError] = useState("");
@@ -101,22 +100,26 @@ const CartPage = ()=>{
             setError("empty inputs or cardNumber is incorrect")
             
         }
-        if(cardExpiredDateMonth.current.value === '' || isNaN(cardExpiredDateMonth.current.value)){
-            cardExpiredDateMonth.current.classList.add("error")
+        console.log(cardExpiredDate.current.value);
+        if(cardExpiredDate.current.value === '' || isNaN(cardExpiredDate.current.value)){
+            cardExpiredDate.current.classList.add("error")
             setError("empty inputs or date the expiration incorrect")
             
         }
-        if(cardExpiredDateYear.current.value === ''|| isNaN(cardExpiredDateYear.current.value)){
-            cardExpiredDateYear.current.classList.add("error")
-            setError("empty inputs or date the expiration incorrect")
-        
-        }
+       
        axiosInstanceAuthoraized.post("/user/makeOrder",{
         "cardHolderName":cardHolder.current.value,
         "cartNumber":cardNumber.current.value,
         "cvv":cardCvv.current.value,
-        "expirationDate":cardExpiredDateYear.current.value+'-'+cardExpiredDateMonth.current.value+'-01',
+        "expirationDate":cardExpiredDate.current.value,
         "type":"visa"
+       }).then((res)=>{
+        if(res != undefined){
+            if(res.status==200){
+                setCartItems([])
+            }
+            }
+              
        })
     }
 
@@ -200,8 +203,7 @@ const CartPage = ()=>{
                         <div className="para_1">
                         <label htmlFor="experation-date">Experation Date</label>
                         <div className="exp-wrapper p">
-                                <input ref={cardExpiredDateMonth} autoComplete="off" className="exp" id="month" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                                <input ref={cardExpiredDateYear} autoComplete="off" className="exp" id="year" maxLength="2" pattern="[0-9]*" inputMode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                                <input ref={cardExpiredDate} autoComplete="off" className="exp" inputMode="numerical" placeholder="expertion date" type="date"/>
                         </div>
                         </div>
                         <div className="para_2">

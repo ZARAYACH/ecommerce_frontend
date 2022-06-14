@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Dashboard.css";
-import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { Route, Routes, Link, useNavigate, useLocation } from "react-router-dom";
 import DashboardNav from "./dashboardCompenent/nav/dashboardNav";
 import DashbordHome from "./dashboardCompenent/home/DashbordHome";
 import DashbordProfileCard from "./dashboardCompenent/dashbordCard/DashbordProfileCard";
 import { axiosInstanceAuthoraized, axiosInstanceOfRefrechToken } from "../axiosConfig/axiosInstance";
 import GlobalUrl from "../globals/Global";
 import Logout from "./dashboardCompenent/Logout";
+import axios from "axios";
 
 function Dashboard(props) {
 
@@ -16,30 +17,53 @@ function Dashboard(props) {
   const [laoding,setLaoding] = useState(false);
   const navigate = useNavigate();
   const [authorized,setAuthorized] = useState(false);
-
+  const location = useLocation(); 
 
   const [home,setHome] = useState();
 
 
 
   useEffect(()=>{
-   axiosInstanceAuthoraized.get("/user/info").then(res=>{
-      if(res != undefined){
-        if(res.name == undefined && res.name != "AxiosError" ){
+    console.log(location.state.t_access_token);
+    if(location.state.t_access_token != undefined){
+
+      axios.get(GlobalUrl()+"/api/v1/user/info",{
+        headers:{
+          "Authorization":"Bearer "+location.state.t_access_token
+        }}).then(res=>{
           setLaoding(true)
           setUser(res.data)
           setAuthorized(true)
-        }else{
-           if(res.response.status === 403){
-             setAuthorized(false)
-             navigate("/account")
+        }).catch(err=>{
+          if(err.response.status === 403){
+            setAuthorized(false)
+            navigate("/account")
+          }else{
+           navigate("/")
+          }
+        })
+
+    }else{
+      axiosInstanceAuthoraized.get("/user/info",).then(res=>{
+        if(res != undefined){
+          if(res.name == undefined && res.name != "AxiosError" ){
+            setLaoding(true)
+            setUser(res.data)
+            setAuthorized(true)
+          }else{
+             if(res.response.status === 403){
+               setAuthorized(false)
+               navigate("/account")
+             }else{
+              navigate("/")
+             }
            }
-         }
-      }else{
-        navigate("/")
-      } 
-    
-   })
+        }else{
+          navigate("/")
+        } 
+      
+     })
+    }
   },[])
 
   useEffect(()=>{

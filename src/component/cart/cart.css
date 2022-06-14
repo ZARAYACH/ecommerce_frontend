@@ -379,43 +379,6 @@ opacity: 1 !important;
 .container_chekout .validate:hover{
     background-color: #526577;
 }
-
-.container_chekout .exp-wrapper {
-    position: relative;
-    border: 1px solid #aaa;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    height: 2rem;
-    line-height: 36px;
-    font-size: 24px;
-    padding-left: 5%;
-    background-color: #ffffff8a;
-    border-radius: 0.3rem;
-    color: #303b47;
-    border: none;
-    outline :none;
-  }
-  
-  .container_chekout .exp-wrapper:after {
-    content: '/';
-    position: absolute;
-    left: 50%;
-    font-size: 1rem;
-    color: #303b47;
-    opacity: .5;
-  }
-  
-  .container_chekout input.exp {
-    float: left;
-    font-family: monospace;
-    border: 0;
-    width: 18px;
-    outline: none;
-    appearance: none;
-    font-size: 14px;
-    background-color: transparent;
-  }
   .errorText{
     color: #a11818;
     font-weight: 700;

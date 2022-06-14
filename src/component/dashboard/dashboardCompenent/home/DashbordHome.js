@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import './DashbordHome.css'
 import GlobalUrl from "../../../globals/Global";
 import Order from "../orderTr";
+import { useLocation } from "react-router-dom";
+
+
 function DashbordHome(props) {
 
     const [orders,setOrders] = useState([])
@@ -9,7 +12,10 @@ function DashbordHome(props) {
     const [nbrCartItems,setNbrCartItems]= useState(0)
     const [averageCosts,setAverageCosts] = useState(0.0)
     const [inCart,setInCart] = useState()
+    const [tokens,setTokens] = useState();
     const [totalCosts,setTotalCosts] = useState()
+     const location = useLocation();
+
     
     useEffect(()=>{
         setOrders(props.orders)
@@ -22,6 +28,7 @@ function DashbordHome(props) {
     useEffect(()=>{
         let nbrBoughtT =0;
         let totalCotsTemp = 0.0;
+        console.log(location.state);
         for(let i=0;i<orders.length;i++){
             nbrBoughtT +=orders[i].orderItems.length
             totalCotsTemp +=orders[i].totalPrice;

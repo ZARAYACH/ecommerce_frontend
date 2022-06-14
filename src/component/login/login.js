@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import {
   axiosInstancePublic
 } from "../axiosConfig/axiosInstance";
@@ -24,10 +24,10 @@ function Login() {
         .then((data) =>{
           localStorage.setItem("t_access_token", data.access_token);
           localStorage.setItem("t_refrech_token", data.refresh_token);
-          return localStorage.getItem("t_refrech_token");
+          return data;
         }).then((data)=>{
-          if(localStorage.getItem("t_refrech_token")===data){
-            navigate("/dashbord/home");         
+          if(localStorage.getItem("t_refrech_token")===data.refresh_token){
+            navigate("/dashbord/home",{state:{t_access_token:`${data.access_token}`,t_refresh_token:`${data.refresh_token}`}});         
           }
         })
         .catch((err) => {

@@ -3,6 +3,7 @@ import { axiosInstanceAuthoraized } from '../axiosConfig/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import './cart.css'
 import CartItem from './CartItem';
+import DashboardNav from '../dashboard/dashboardCompenent/nav/dashboardNav';
 
 
 const CartPage = ()=>{
@@ -90,37 +91,38 @@ const CartPage = ()=>{
         if(cardCvv.current.value === '' || isNaN(cardCvv.current.value)){
             cardCvv.current.classList.add("error")
             setError("empty inputs or cardCvv incorrect");
-        }
-        if(cardHolder.current.value === ''){
+        }else if(cardHolder.current.value === ''){
             cardHolder.current.classList.add("error")
             setError("empty inputs")
-        }
-        if(cardNumber.current.value === ''|| isNaN(cardNumber.current.value)){
+        }else if(cardNumber.current.value === ''|| isNaN(cardNumber.current.value)){
             cardNumber.current.classList.add("error")
             setError("empty inputs or cardNumber is incorrect")
-            
-        }
-        console.log(cardExpiredDate.current.value);
-        if(cardExpiredDate.current.value === '' || isNaN(cardExpiredDate.current.value)){
+        }else if(cardExpiredDate.current.value === '' ){
             cardExpiredDate.current.classList.add("error")
             setError("empty inputs or date the expiration incorrect")
-            
-        }
+        }else{
+            axiosInstanceAuthoraized.post("/user/makeOrder",{
+                "cardHolderName":cardHolder.current.value,
+                "cartNumber":cardNumber.current.value,
+                "cvv":cardCvv.current.value,
+                "expirationDate":cardExpiredDate.current.value,
+                "type":"visa"
+               }).then((res)=>{
+                if(res != undefined){
+                    if(res.status==200){
+                        setCartItems([])
+                    cardCvv.current.classList.add("succes")
+                    cardHolder.current.classList.add("succes")
+                    cardNumber.current.classList.add("succes")
+                    cardExpiredDate.current.classList.add("success")
+                    errorHolder.current.value = "your purshase is done successfully"
+
+                    }
+                    }
+                      
+               })
+            }
        
-       axiosInstanceAuthoraized.post("/user/makeOrder",{
-        "cardHolderName":cardHolder.current.value,
-        "cartNumber":cardNumber.current.value,
-        "cvv":cardCvv.current.value,
-        "expirationDate":cardExpiredDate.current.value,
-        "type":"visa"
-       }).then((res)=>{
-        if(res != undefined){
-            if(res.status==200){
-                setCartItems([])
-            }
-            }
-              
-       })
     }
 
     const updateCartItems=(cartItem)=>{

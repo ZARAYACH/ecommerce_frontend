@@ -28,7 +28,6 @@ function DashbordHome(props) {
     useEffect(()=>{
         let nbrBoughtT =0;
         let totalCotsTemp = 0.0;
-        console.log(location.state);
         for(let i=0;i<orders.length;i++){
             nbrBoughtT +=orders[i].orderItems.length
             totalCotsTemp +=orders[i].totalPrice;

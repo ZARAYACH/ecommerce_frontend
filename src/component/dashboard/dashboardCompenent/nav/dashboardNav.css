@@ -63,8 +63,8 @@
 
 }
 .dashNav .active{
-    background-color: #f9faff !important;
-    color: black !important;
+    background-color: #040406 !important;
+    color: white !important;
 }
 .dashNav .active a{
     color: black;
@@ -84,7 +84,7 @@
     top: -20px;
     height: 20px;
     width: calc(100% - 8px);
-    background-color: white;
+    background-color: #040406;
     
 }
 .dashNav ul li.active b:nth-child(1)::before{
@@ -102,7 +102,7 @@
     bottom: -20px;
     height: 20px;
     width: calc(100% - 8px);
-    background-color: white;
+    background-color: #040406;
 }
 .dashNav ul li.active b:nth-child(2)::before{
     content: '';

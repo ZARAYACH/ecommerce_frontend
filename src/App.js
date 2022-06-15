@@ -35,6 +35,7 @@ function App() {
             <Route path='/dashbord/search' element= {<Dashboard search/>} />
             <Route path='/dashbord/settings' element= {<Dashboard settings/>} />
             <Route path='/dashbord/logout' element= {<Dashboard logout/>} />
+            <Route path='/dashbord/admin/pannel' element= {<Dashboard AdminPannel/>} />
             <Route path='/cart' element= {<CartPage/>} />
          </Routes>
    </div>

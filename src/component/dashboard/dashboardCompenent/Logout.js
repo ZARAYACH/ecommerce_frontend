@@ -8,10 +8,12 @@ const Logout = ()=>{
 
     useEffect(()=>{
         axiosInstanceAuthoraized.post("/user/logout").then((res)=>{
-            console.log(res);
+            if(localStorage.getItem("t_access_token")!=undefined||localStorage.getItem("t_refrech_token")!=undefined){
+                localStorage.removeItem("t_access_token")
+                localStorage.removeItem("t_refrech_token")
+            }
             navigate("/")
         }).catch((err)=>{
-            console.log(err);
         })
     },[])
 

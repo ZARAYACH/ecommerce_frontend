@@ -38,7 +38,6 @@ function Signup() {
         passwordRepeat !== "" &&
         gender !== "" &&
         birthDate !== ""){
-          console.log(gender);
 
             axiosInstancePublic.post
             ("/api/v1/user/signup",
@@ -67,7 +66,6 @@ function Signup() {
             })
             .catch(err=>{
               makeEvryEntryError()
-              console.log(err);
               if(errorMesage.current.classList.contains("doneMessage")){
                 errorMesage.current.classList.remove("doneMessage")
                 errorMesage.current.classList.add("errorMessage")

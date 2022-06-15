@@ -8,6 +8,7 @@ import { axiosInstanceAuthoraized, axiosInstanceOfRefrechToken } from "../axiosC
 import GlobalUrl from "../globals/Global";
 import Logout from "./dashboardCompenent/Logout";
 import axios from "axios";
+import AdminPanel from "./dashboardCompenent/adminPanel";
 
 function Dashboard(props) {
 
@@ -24,8 +25,7 @@ function Dashboard(props) {
 
 
   useEffect(()=>{
-    console.log(location.state.t_access_token);
-    if(location.state.t_access_token != undefined){
+    if(location.state != undefined){
 
       axios.get(GlobalUrl()+"/api/v1/user/info",{
         headers:{
@@ -100,13 +100,16 @@ function Dashboard(props) {
   
   return (
     <div className="dashboard-container">
-      <DashboardNav></DashboardNav>
+      <DashboardNav userr ={user}></DashboardNav>
       <div className="main_dashbord">
         {props.home &&  <DashbordHome  orders ={orders!=[]?orders:[]} authorized={authorized} cartItems = {cartItems} />}
         {/* {props.search && <DashbordSearch/>}
             {props.profile && <DashbordProfile/>}
             {props. && <DashbordHome/> */}
             {props.logout && <Logout/>} 
+            {props.AdminPannel && <AdminPanel/>} 
+
+
       </div>
       <div className="placeholder"></div>
       <DashbordProfileCard user={user !={} ? user : {}} />

@@ -25,7 +25,7 @@ main{
     position: relative;
 
 }
-.up{
+.hero .up{
     display: flex;
     width: 100%;
     flex-direction: column;

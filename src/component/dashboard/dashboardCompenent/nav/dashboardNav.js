@@ -104,12 +104,12 @@ function DashboardNav(props) {
                 user.roles.map((role)=>{
                     if(role.id == 1 && role.name =="ADMIN"){            
                         return (
-                            <li location="adminPanel" key={user.name} ref={cartRef} className="click">
+                            <li location="adminPanel" key={user.id+1} ref={cartRef} className="click">
                             <b></b>
                                 <b></b>
                                 <Link to={"/dashbord/admin/pannel"}>
-                                <i className="fa fa-tower-control"></i>
-                                    <span>admin panel</span>
+                                <i className="fa-solid fa-folder-gear"></i>
+                              <span>admin panel</span>
                                 </Link>
                             </li>
                         )

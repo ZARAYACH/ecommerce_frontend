@@ -399,6 +399,15 @@ opacity: 1 !important;
 .container_adminPannel .control{
     width: 100%;
 }
+.container_adminPannel .up{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 2rem ;
+}
 .container_adminPannel .controle-title{
     width: 100%;
     margin-top: .5rem;
@@ -453,7 +462,7 @@ opacity: 1 !important;
     align-content: center;
     height: 4rem;
 }
-.container_adminPannel .form-btn input[type='submit']{
+.container_adminPannel .form-btn input[type='button']{
     width: 4rem;
     height: 2rem;
     background-color: #1edc83;
@@ -478,6 +487,14 @@ opacity: 1 !important;
     cursor: pointer;
     transition: .3s;
 
+}
+.container_adminPannel #depart{
+    background-color: transparent;
+    width: 75%;
+    height: 2rem;
+}
+.container_adminPannel select option{
+    background: transparent;
 }
 .container_adminPannel .delete i{
     transform: none !important;

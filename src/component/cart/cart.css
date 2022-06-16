@@ -493,8 +493,8 @@ opacity: 1 !important;
     width: 75%;
     height: 2rem;
 }
-.container_adminPannel select option{
-    background: transparent;
+.container_adminPannel select option {
+    background-color: #040406 ;
 }
 .container_adminPannel .delete i{
     transform: none !important;

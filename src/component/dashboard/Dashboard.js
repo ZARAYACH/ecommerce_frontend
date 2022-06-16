@@ -34,6 +34,7 @@ function Dashboard(props) {
           setLaoding(true)
           setUser(res.data)
           setAuthorized(true)
+ 
         }).catch(err=>{
           if(err.response.status === 403){
             setAuthorized(false)
@@ -68,27 +69,32 @@ function Dashboard(props) {
 
   useEffect(()=>{
       if(laoding){
-        axiosInstanceAuthoraized.get("/user/order/all")
-        .then(res=>{
-          if(res != undefined){
-            if(res.status === 200){
-              setOrders(res.data)
-            }
-          }else{
-            navigate("/")
-          }
-        })
-        axiosInstanceAuthoraized.get("/user/cart/Cartitems/all")
+        if(user.active){
+          axiosInstanceAuthoraized.get("/user/order/all")
           .then(res=>{
             if(res != undefined){
               if(res.status === 200){
-                setCartItems(res.data.length)
-              
+                setOrders(res.data)
               }
             }else{
               navigate("/")
             }
           })
+          axiosInstanceAuthoraized.get("/user/cart/Cartitems/all")
+            .then(res=>{
+              if(res != undefined){
+                if(res.status === 200){
+                  setCartItems(res.data.length)
+                
+                }
+              }else{
+                navigate("/")
+              }
+            })
+        }else{
+          setCartItems(0)
+          setOrders([])
+        }
         }
   },[laoding])
   
@@ -102,7 +108,7 @@ function Dashboard(props) {
     <div className="dashboard-container">
       <DashboardNav userr ={user}></DashboardNav>
       <div className="main_dashbord">
-        {props.home &&  <DashbordHome  orders ={orders!=[]?orders:[]} authorized={authorized} cartItems = {cartItems} />}
+        {props.home &&  <DashbordHome user ={user}  orders ={orders!=[]?orders:[]} authorized={authorized} cartItems = {cartItems} />}
         {/* {props.search && <DashbordSearch/>}
             {props.profile && <DashbordProfile/>}
             {props. && <DashbordHome/> */}

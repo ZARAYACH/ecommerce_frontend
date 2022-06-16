@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { axiosInstanceAuthoraized } from '../../axiosConfig/axiosInstance';
 
@@ -7,6 +7,13 @@ const AdminPanel = ()=>{
 
     const [categorie,setCategorie]= useState([]);
     const location = useLocation();
+    const titleRef = useRef();
+    const priceRef = useRef();
+    const descriptionRef = useRef();
+    const maxQuantityRef = useRef();
+    const categoryRef = useRef();
+    const imagesRef = useRef();
+
 
    const loadCategoriesOptions= () =>{
         axiosInstanceAuthoraized("/admin/category/all")
@@ -21,6 +28,15 @@ const AdminPanel = ()=>{
         loadCategoriesOptions()
     },[])
 
+    // const handleAddProduct=()=>{
+    //     if(titleRef.current.value != ""){
+    //         if(descriptionRef.current.value != ""){
+    //             if(priceRef.current.value != ""){
+    //             }
+    //         }
+    //     }
+    // }
+
     return(
         <div className="container_adminPannel">
              <div className="up">
@@ -34,29 +50,29 @@ const AdminPanel = ()=>{
                       <div className="form-body">
                         <div className="form-body-body">
                         <label htmlFor="to">product title</label>
-                        <input  id="to" name="to" type="text"></input>
+                        <input ref={titleRef} id="to" name="to" type="text"></input>
                         </div>
                         <div className="form-body-body">
                         <label htmlFor="desc">Description</label>
-                        <input  id="desc" name="desc" type="text"></input>
+                        <input ref={descriptionRef} id="desc" name="desc" type="text"></input>
                         </div>
                       
                       </div>
                       <div className="form-body">
                         <div className="form-body-body">
                         <label htmlFor="price">price</label>
-                        <input  id="price" name="price" type="number"></input>
+                        <input ref={priceRef}  id="price" name="price" ></input>
                             </div>
                             <div className="form-body-body">
                             <label htmlFor="max">max quantity</label>
-                        <input  id="max" name="max" type="number"></input>
+                        <input ref={maxQuantityRef}  id="max" name="max"  ></input>
                         </div>
                       </div>
 
                       <div className="form-body">
                         <div className="form-body-body">
                         <label htmlFor="depart">categorie</label>
-                        <select  id="depart" name="depart" >
+                        <select ref={categoryRef}  id="depart" name="depart" >
                             {
                                 categorie.map(categorie=>(
                                     <option key={categorie.id} value={categorie.name} >{categorie.name}</option>
@@ -66,7 +82,7 @@ const AdminPanel = ()=>{
                             </div>
                         <div className="form-body-body">
                         <label htmlFor="img">add a image</label>
-                        <input  type="file" name="img" id="img"></input>
+                        <input ref={imagesRef} type="file" name="img" id="img" multiple></input>
                       </div> 
                       
                       </div>
@@ -77,7 +93,7 @@ const AdminPanel = ()=>{
                      <input type="reset" value="reset"></input>
                      </div>
                      <div className="form-body-body">
-                     <input  type="button" value="add"></input>
+                     <input /*onClick={handleAddProduct()}*/  type="button" value="add"></input>
                      </div>
                      
                        

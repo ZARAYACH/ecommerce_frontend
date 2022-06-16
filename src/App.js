@@ -7,6 +7,7 @@ import Dashboard from './component/dashboard/Dashboard';
 import Login from './component/login/login';
 import Signup from './component/SignUp/SignUp';
 import CartPage from './component/cart/CartPage';
+import { ReactNotifications } from 'react-notifications-component'
 
 function RedirectToDashbord(){
 
@@ -24,6 +25,7 @@ function App() {
 
    return(
    <div className='container'>
+      <ReactNotifications/>
          <Routes>
             <Route path='/' element= {<Home/>} />
             <Route path='/account' element={<Login/>} />

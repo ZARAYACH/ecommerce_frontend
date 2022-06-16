@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './cart.css'
 import CartItem from './CartItem';
 import DashboardNav from '../dashboard/dashboardCompenent/nav/dashboardNav';
+import { Notification } from '../Notification/Notification';
 
 
 const CartPage = ()=>{
@@ -80,8 +81,8 @@ const CartPage = ()=>{
         .then((res)=>{
             if(res != undefined){
             if(res.status==200){
-                setCartItems(cartItems.filter(function(f){ return f !== cartItem })
-                );
+                setCartItems(cartItems.filter(function(f){ return f !== cartItem }));
+                Notification("Success",res.data.success,"success")
             }
             }
         })

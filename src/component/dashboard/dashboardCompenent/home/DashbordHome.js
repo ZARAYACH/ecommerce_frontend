@@ -3,10 +3,12 @@ import './DashbordHome.css'
 import GlobalUrl from "../../../globals/Global";
 import Order from "../orderTr";
 import { useLocation } from "react-router-dom";
+import { Notification } from "../../../Notification/Notification";
 
 
 function DashbordHome(props) {
 
+    const [user,setUser] = useState(props.user)
     const [orders,setOrders] = useState([])
     const [nbrBought,setNbrBought]= useState(0)
     const [nbrCartItems,setNbrCartItems]= useState(0)
@@ -15,6 +17,7 @@ function DashbordHome(props) {
     const [tokens,setTokens] = useState();
     const [totalCosts,setTotalCosts] = useState()
      const location = useLocation();
+
 
     
     useEffect(()=>{
@@ -35,9 +38,14 @@ function DashbordHome(props) {
         setNbrBought(nbrBoughtT)
         setTotalCosts(totalCotsTemp)
     },[orders])
+    useEffect(()=>{
+        if(!user.active){
+        Notification("activate your account","avtivate your account to be able to complete your future purchses","warning")
+        }
+    },[user])
+        
     return (
         <div className="home">
-            
         <div className="upp">
           <div className="spending">
               <div className="spending-title">

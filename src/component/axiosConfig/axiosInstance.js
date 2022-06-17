@@ -20,7 +20,6 @@ const axiosInstanceOfRefrechToken = axios.create({
 })
 
 axiosInstanceAuthoraized.interceptors.response.use((res)=>{
-    console.log(res);
     return res;
 },(error)=> {
     if (error.response.status === 498) {

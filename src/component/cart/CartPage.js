@@ -16,7 +16,7 @@ const CartPage = ()=>{
     const errorHolder = useRef();
 
     const [error,setError] = useState("");
-    const [user,setUser] = useState({});
+    const [user,setUser] = useState();
     const navigate = useNavigate();
     const [authorized,setAuthorized] = useState(false); 
     const [cartItems,setCartItems] = useState([]);
@@ -76,6 +76,14 @@ const CartPage = ()=>{
         setTotal(extra+subCharge)
     },[extra,subCharge])
 
+    useEffect(()=>{
+        if(user !== undefined){
+        if(!user.active){
+            Notification("activate your account","avtivate your account to be able to complete your future purchses","warning")
+            }
+       }
+    },[user])
+    
     const removeFromCart = (cartItem)=>{
         axiosInstanceAuthoraized.delete("/user/cart/item/delete?id="+cartItem.id)
         .then((res)=>{

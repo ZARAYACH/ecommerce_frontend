@@ -5,7 +5,6 @@ const ControleItem=(props)=>{
 
     const [product,setProduct] = useState(props.product);
    
-    
     return(
         <tr>
                <td className='name'>
@@ -20,7 +19,7 @@ const ControleItem=(props)=>{
                    </div>
                </td>
                <td className='qte'>{product.quantityToSell}</td>
-               <td className='tikets-left'>{product.category.name}</td>
+                <td className='tikets-left'>{product.category.name}</td>
                <td className='travel-cost'>{product.price}</td>
                <td className='type delete'><i onClick={()=>{
                    props.deleteProduct(product.id)

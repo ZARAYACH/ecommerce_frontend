@@ -51,7 +51,6 @@
 .dashNav ul li{
     margin-top: 2rem;
     margin-left: 1rem;
-    padding: .7rem 0rem;
     width: 100%;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -63,9 +62,9 @@
     background-color: rgba(255, 255, 255, 0.116);
 
 }
-.active{
-    background-color: #f9faff !important;
-    color: black !important;
+.dashNav .active{
+    background-color: #040406 !important;
+    color: white !important;
 }
 .dashNav .active a{
     color: black;
@@ -78,13 +77,14 @@
     text-decoration: none;
     align-items: center;
     justify-content: center;
+    padding: 1rem 0;
 }
 .dashNav ul li.active b:nth-child(1){
     position: absolute;
     top: -20px;
     height: 20px;
     width: calc(100% - 8px);
-    background-color: white;
+    background-color: #040406;
     
 }
 .dashNav ul li.active b:nth-child(1)::before{
@@ -102,7 +102,7 @@
     bottom: -20px;
     height: 20px;
     width: calc(100% - 8px);
-    background-color: white;
+    background-color: #040406;
 }
 .dashNav ul li.active b:nth-child(2)::before{
     content: '';

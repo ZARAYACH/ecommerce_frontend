@@ -10,3 +10,9 @@
     align-items: flex-start;
 
 }
+.error{
+    border: 1px solid rgb(217, 71, 71) !important;
+}
+.success{
+    border: 1px solid rgb(71, 217, 81) !important;
+}

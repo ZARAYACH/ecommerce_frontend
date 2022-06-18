@@ -14,7 +14,7 @@
     width: 66%;
     margin-top: 1.5rem;
 }
-.home .up{
+.home .upp{
     width: 100%;
     display: flex;
     flex-direction: row ;
@@ -129,7 +129,7 @@
     width: 46%;
     margin-bottom: 3%;
     height: 6rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.333);
     border-radius: .5rem;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
     display: flex;
@@ -283,8 +283,10 @@
     font-size: .7rem;
     opacity: .6;
     text-transform: uppercase;
+    
 
 }
+
 .home .table thead tr th{
     width: 12.5%;
     text-align: center;
@@ -297,13 +299,21 @@
 .home .table tbody tr{
     width: 100%;
     margin-top: .6rem;
-    height: 4.5rem;
-    background-color: white;
+    margin-bottom: .6rem;
+    height: 3rem;
+    padding: .5rem;
+    background-color: transparent;
     text-align: center;
     font-size: 1rem;
     border-radius:1rem;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    color: #303b47 !important;
+    transition: .3s;
+    cursor: pointer;
 
+}
+.home .table tbody tr:hover{
+    background-color: #ffffff6a;
 }
 .home .table tbody tr td:first-child{
     border-bottom-left-radius: 1rem ;
@@ -318,6 +328,7 @@
 .home .table tbody tr td{
     font-size: 1rem;
     font-weight: 600;
+    
 }
 .home .table tbody tr td:first-child .image{
     width: 3rem;
@@ -334,6 +345,9 @@
     display: inline-block;
     margin-left: 1rem;
     align-items: center;
+}
+.home .table tbody{
+    background-color: transparent;
 }
 .home .table tbody tr td:first-child .image img{
     max-width: 100%;

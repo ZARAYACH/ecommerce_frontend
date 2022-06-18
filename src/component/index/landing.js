@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import "./landingStyle.css"
 import axios from "axios";
-import GlobalUrl from "../variables/Global";
+import GlobalUrl from "../globals/Global";
 function Landing(props){
     const url = GlobalUrl()+"/images/products/phone.svg";
 

@@ -1,34 +1,35 @@
 import React from 'react';
 import './dachbordCardProfile.css'
+import GlobalUrl from '../../../globals/Global';
 
 
-function DashbordProfileCard(params) {
+function DashbordProfileCard(props) {
+    
     
     return(
         <div>
-            <div className="placeholder"></div>
             <div className="id-card">
             <div className="user-img"><div className="imgChange">
                 <form action="" encType="multipart/form-data">
                 <label htmlFor="changee"><i className="fa fa-upload"></i></label>    
                 <input id="changee" name="changee" type="file"></input>
                 </form>
-            </div><img id='userIMG' src="" alt=""></img></div>
-                <div className="user-name"><span>Dear Customer ,Welcome</span>
+            </div><img id='userIMG' src={props.user.img==null?GlobalUrl()+"/images/users/default.png":GlobalUrl()+props.user.img} alt=""></img></div>
+                <div className="user-name">{props.user.firstName +' '+props.user.lastName}<span>Dear Customer ,Welcome</span>
                 </div>
             <div className="contact">
                 <p>Contact information</p>
                 <div className="contact-info">
                     <label htmlFor="">Email</label>
                     <div className="info">
-                        <span></span>
+                        <span>{props.user.email}</span>
                         <i className="fa-solid fa-envelope"></i>
                     </div>
                 </div>
                     <div className="contact-info">
                     <label htmlFor="">Phone</label>
                     <div className="info">
-                    <span id="phoneNbre"><span id="country-code"></span></span>
+                    <span id="phoneNbre">{props.user.phoneNumber}<span id="country-code"></span></span>
                     <i className="fa fa-phone"></i>
                     </div>
                     </div>

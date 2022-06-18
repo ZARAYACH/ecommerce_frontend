@@ -20,9 +20,11 @@ function NavBar(){
             </nav>
         </div>
         <div className="buttons">
-            <div className="button"><span className="material-icons">
+          <Link to={"/cart"}>
+          <div className="button"><span className="material-icons">
                 shopping_cart
                 </span></div>
+                </Link>
         </div>
     </header>
     );
